@@ -1,0 +1,10 @@
+# Derlenen binary. Yollar köke sabitli, yoksa "p2pvoicechat" deseni
+# cmd/p2pvoicechat/ klasörünü de yok sayar.
+/p2pvoicechat
+/p2pvoicechat.exe
+/p2pvoicechat-arm64
+
+# TLS malzemesi — asla depoya girmemeli
+*.pem
+*.crt
+*.key

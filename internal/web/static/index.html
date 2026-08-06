@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P2P Voice Chat</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="brand">P2P Voice Chat</div>
+  <div id="status" class="status" data-state="idle">
+    <span class="dot"></span>
+    <span id="status-text">hazır</span>
+  </div>
+  <div id="stats" class="stats-readout"></div>
+  <div id="peer" class="peer">oda boş</div>
+</header>
+
+<main id="stage" class="stage">
+  <video id="remote-video" class="remote-video hidden" autoplay playsinline></video>
+  <div id="placeholder" class="placeholder">
+    <p class="placeholder-title">Odaya katılmak için başlat</p>
+    <p class="placeholder-hint">Karşı taraf da aynı adresi açtığında bağlantı kendiliğinden kurulur.</p>
+  </div>
+</main>
+
+<footer class="controls">
+  <button id="join" class="btn btn-primary">Katıl</button>
+  <button id="leave" class="btn" disabled>Ayrıl</button>
+  <button id="mute" class="btn" disabled title="Kısayol: M">Sustur</button>
+  <button id="share" class="btn" disabled>Ekranı paylaş</button>
+
+  <div class="meter" title="mikrofon seviyesi">
+    <div id="meter-fill" class="meter-fill"></div>
+  </div>
+
+  <div class="controls-spacer"></div>
+
+  <label class="field">
+    <span>Mikrofon</span>
+    <select id="mic"></select>
+  </label>
+
+  <label class="field">
+    <span>Hoparlör</span>
+    <select id="speaker"></select>
+  </label>
+
+  <label class="field">
+    <span>Gelen ses</span>
+    <input type="range" id="volume" min="0" max="100" value="100">
+  </label>
+
+  <label class="check" title="Basılı tutulduğu sürece mikrofon açılır. Kısayol: Boşluk">
+    <input type="checkbox" id="ptt">
+    <span>Bas-konuş</span>
+  </label>
+
+  <label class="field">
+    <span>Kalite</span>
+    <select id="bitrate">
+      <option value="64000">64 kbps — Discord seviyesi</option>
+      <option value="128000">128 kbps</option>
+      <option value="160000" selected>160 kbps — önerilen</option>
+      <option value="256000">256 kbps</option>
+      <option value="510000">510 kbps — azami</option>
+    </select>
+  </label>
+
+  <label class="field">
+    <span>Ekran</span>
+    <select id="screen-quality">
+      <option value="1920x1080@30">1080p30 — önerilen</option>
+      <option value="1920x1080@60">1080p60 — oyun</option>
+      <option value="1280x720@30">720p30 — düşük yük</option>
+      <option value="2560x1440@30">1440p30</option>
+    </select>
+  </label>
+
+  <label class="check" title="Kulaklık kullanıyorsan kapalı bırak: ses işleme sesi mono'ya indirir ve tizleri kırpar.">
+    <input type="checkbox" id="processing">
+    <span>Yankı engelleme</span>
+  </label>
+</footer>
+
+<audio id="remote-audio" autoplay></audio>
+
+<script type="module" src="/app.js"></script>
+</body>
+</html>
